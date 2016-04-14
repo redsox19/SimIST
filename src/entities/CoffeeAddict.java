@@ -5,25 +5,38 @@
  */
 package entities;
 
-/**
- *
- * @author vqm5108
- */
-public class CoffeeAddict extends Student 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.Timer;
+public class CoffeeAddict extends Student implements ActionListener
 {
     private int coffeeNeed =0;
+
+    
+   
+    
     
     public CoffeeAddict(String fName, String lName, int age, int studentIDnum, double GPA, String classStanding)
     {
         super(fName, lName, age, studentIDnum, GPA, classStanding);
+        Timer time = new Timer(1000, this); // setting up the timer here
+         time.start(); //starting the timer
     }
-    
-    if(coffeeNeed <= 50)
+
+    @Override
+    public void actionPerformed(ActionEvent ae) 
     {
-        System.out.println("I need some coffee!!");
-    }
-    else if(coffeeNeed > 50)
-    {
-        System.out.println("I had my coffee for today");
+        coffeeNeed++;
+      if(coffeeNeed < 50)
+      {
+          coffeeNeed++;
+          System.out.print("Character needs coffee" + coffeeNeed);
+      }
+      if(coffeeNeed > 50)
+      {
+          coffeeNeed--;
+          System.out.print("Coffee need has been attained" + coffeeNeed);
+      }
+     
     }
 }
